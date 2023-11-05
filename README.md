@@ -7,6 +7,8 @@ Ahora si...
 
 Para este entregable decidí hacer un modelo de deep learning que pudiera predecir el alfabeto de lenguaje de señas a través de imágenes, utilizando transfer learning y mis adaptaciones del modelo para la clasificacióm.
 
+![alt text](https://github.com/karencl/IA2_TC3007C/blob/master/Images/sign_alphabet.png)
+
 ## Dataset
 El dataset que utilicé para este entregable se llama "Sign Language MNIST", obtenido de: https://www.kaggle.com/datasets/datamunge/sign-language-mnist/data.
 Lo que se busca con este data set es predecir el lenguaje de señas, a través de imágenes del alfabeto. (Cabe aclarar que en este caso, se cuentan con 24 clases (24 letras diferentes) en vez de 26, debido a que en el lenguaje de señas, para la *j* y la *z* se requieren movimientos especiales y evidentemente no es posible analizar esto con imágenes).
