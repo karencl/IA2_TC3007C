@@ -20,19 +20,20 @@ import json
 
 
 if __name__ == '__main__':
-    # En caso de que se quieran volver a preparar los datos, se descomentan estas líneas
+    # Para olver a preparar los datos, se descomenta la siguiente línea
     #prepareFiles()
-    #print('Datos listos')
     
-    createModel()
-    print('Se ha creado un nuevo modelo!')
+    # Para crear un nuevo modelo, se descomenta la siguiente línea
+    #createModel()
     
     # Cargo el modelo y su historial
     modelo_cargado = 'MobileNet_signs.h5'
+    historial_cargado = 'MobileNet_model_history.json'
     model = load_model(f'Model and history/{modelo_cargado}')
-    with open('Model and history/MobileNet_model_history.json', 'r') as f:
+    with open(f'Model and history/{historial_cargado}', 'r') as f:
         history = json.load(f)
     print(f'Se ha cargado el modelo: {modelo_cargado}')
+    print(f'Se ha cargado el historial: {historial_cargado}')
     
     epochs = len(history['acc']) + 1
     
@@ -68,6 +69,7 @@ if __name__ == '__main__':
     random_images = [test_images[i][np.newaxis,...] for i in random_images_idx]
 
     # Hago las predicciones
+    print('Haciendo predicciones...')
     predictions = [model.predict(img).squeeze() for img in random_images]
 
     # Muestro los resultados
@@ -80,3 +82,4 @@ if __name__ == '__main__':
 
     plt.tight_layout()
     plt.show()
+    

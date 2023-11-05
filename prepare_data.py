@@ -87,3 +87,5 @@ def prepareFiles():
     saveFile(test_labels, 'Dataset/test_labels.csv')
     saveFile(val_images, 'Dataset/resized_validation.csv')
     saveFile(val_labels, 'Dataset/validation_labels.csv')
+    
+    print('Datos listos')

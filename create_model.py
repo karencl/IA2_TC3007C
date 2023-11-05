@@ -51,6 +51,7 @@ def createModel():
     lbls_test_df = pd.read_csv('Dataset/test_labels.csv')
     
     # Les hacemos un reshape a las imágenes
+    print('Haciedo el reshape de las imágenes...')
     train_images, train_labels = reshapeData(imgs_train_df.values, lbls_train_df.values)
     val_images, val_labels = reshapeData(imgs_val_df.values, lbls_val_df.values)
     test_images, test_labels = reshapeData(imgs_test_df.values, lbls_test_df.values)
@@ -66,6 +67,7 @@ def createModel():
     test_generator = getGenerator(test_images, test_labels)
     
     # Descargo el modelo
+    print('Creando el modelo...')
     conv_base= MobileNet(weights = 'imagenet',
                         include_top = False,
                         input_shape = (80, 80, 3))
@@ -89,6 +91,7 @@ def createModel():
 
     # Entreno y valido el modelo
     epochs = 10
+    print('Entrenando el modelo...')
     history = model.fit(train_generator,
                         steps_per_epoch = 100,
                         epochs = epochs,
@@ -96,6 +99,7 @@ def createModel():
                         validation_steps = 40)
     
     # Evalúo el modelo
+    print('Evaluando el modelo...')
     test_loss, test_acc = model.evaluate(test_generator, steps = 20)
     history.history['test_loss'] = test_loss
     history.history['test_acc'] = test_acc
@@ -104,5 +108,6 @@ def createModel():
     with open('Model and history/MobileNet_model_history_new.json', 'w') as f:
         json.dump(history.history, f)
     model.save('Model and history/MobileNet_signs_new.h5')
-    print('Model saved successfully!')
+    
+    print('Se ha creado un nuevo modelo dento de Model and history')
     
