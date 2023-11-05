@@ -1,4 +1,5 @@
 # IA2_TC3007C - Implementación de un modelo de deep learning (Portafolio de implementación)
+# Karen Cebreros López - A01704254
 
 ## Descripción
 *Antes que nada, quiero decir que para este entregable tenía un trabajo hecho sobre un modelo para clasificación de audio de muchos idiomas, para poder identificar cual es el que se habla. Sin embargo, por cuestiones de tiempo (era muy pesado hacer varios entrenamientos de esto en mi computadora), decidí mejor hacer mi entregable con mi idea original, aunque después planeo después agregar mi segundo proyecto a este mismo repo : )*
@@ -9,7 +10,7 @@ Para este entregable decidí hacer un modelo de deep learning que pudiera predec
 
 ![alt text](https://github.com/karencl/IA2_TC3007C/blob/master/Images/sign_alphabet.png)
 
-## Especifiaciones para correrlo
+## Especifiaciones para correr el código
 En el main está todo listo para poner el código a prueba, cargar el modelo con su historial que se encuentran dentro de la carpeta "Model and history" y hacer predicciones. Sin embargo, si se quiere crear un nuevi modelo, solamente se tiene que descomentar la función **createModel()** que se encuentra en la línea número 27 del código del main. Así mismo, si se desea cargar el nuevo modelo con su historial que se va a guardar, es necesario poner el nombre de estos en las variables **modelo_cargado** e **historial_cargado** respectivamente, que se encuentran en el main en las líneas 30 y 31 del código del main. 
 
 *(NOTA: el nombre por default que tienen estos dos nuevos documentos, son: **MobileNet_signs_new.h5** y **MobileNet_model_history_new.json** respectivamente).*
@@ -45,7 +46,7 @@ MobileNet es un modelo del framework 'keras', que utiliza una operación llamada
 ### 1 - Fit
 ![alt text](https://github.com/karencl/IA2_TC3007C/blob/master/Images/history.png)
 
-En la imagen de arriba podemos observar como fue el historial del entrenamiento y la validación. Al final, en el entrenamiento se obtuvo **accuracy = 98.34%** y **loss = 0.1594**. Y en la validación se obtuvo **accuracy = 90.32%** y **loss =0.3844**.
+En la imagen de arriba podemos observar como fue el historial del entrenamiento y la validación. Al final, en el entrenamiento se obtuvo **accuracy = 98.34%** y **loss = 0.1593**. Y en la validación se obtuvo **accuracy = 90.31%** y **loss =0.3844**.
 
 Pasamos a verlo en gráficas:
 #### Plots: Train & Validation - Accuracy & Loss
@@ -60,7 +61,7 @@ Al observar ambas gráficas anteriores, podemos ver que el modelo se está compo
 ### 2 - Evaluate
 ![alt text](https://github.com/karencl/IA2_TC3007C/blob/master/Images/test_acc.png)
 
-En la imagen de arriba podemos observar como fue la evaluación de mi modelo con el conjunto de prueba. Podemos ver que se obtuvo **accuracy = 91.25%**, lo cual es bastante bueno y lo consideré aceptable para pasar a la siguiente etapa.
+En la imagen de arriba podemos observar como fue la evaluación de mi modelo con el conjunto de prueba. Podemos ver que se obtuvo **accuracy = 92.18%**, lo cual es bastante bueno y lo consideré aceptable para pasar a la siguiente etapa.
 
 ### 2 - Predict
 
