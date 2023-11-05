@@ -34,29 +34,32 @@ MobileNet es un modelo del framework 'keras', que utiliza una operación llamada
 
 ## Desempeño por etapas
 ### 1 - Fit
+![alt text](https://github.com/karencl/IA2_TC3007C/blob/master/Images/history.png)
 
-En la imagen de arriba podemos observar como fue el historial del entrenamiento y la validación. Al final, en el entrenamiento se obtuvo **accuracy: ** y **loss: **. Y en la validación se obtuvo **accuracy: ** y **loss: **.
+En la imagen de arriba podemos observar como fue el historial del entrenamiento y la validación. Al final, en el entrenamiento se obtuvo **accuracy = 98.34%** y **loss = 0.1594**. Y en la validación se obtuvo **accuracy = 90.32%** y **loss =0.3844**.
 
 Pasamos a verlo en gráficas:
 #### Plots: Train & Validation - Accuracy & Loss
 - **Train accuracy VS Validation accuracy** 
-![alt text](https://github.com/karencl/IntroIA_TC3006C/blob/master/Entrega3/Images/Figure_3.png)
+![alt text](https://github.com/karencl/IA2_TC3007C/blob/master/Images/train_val_acc.png)
 
 - **Train loss VS Validation loss**
-![alt text](https://github.com/karencl/IntroIA_TC3006C/blob/master/Entrega3/Images/Figure_4.png)
+![alt text](https://github.com/karencl/IA2_TC3007C/blob/master/Images/train_val_loss.png)
 
 Al observar ambas gráficas anteriores, podemos ver que el modelo se está comportando de buena manera y que no hay overfitting en este.
 
 ### 2 - Evaluate
+![alt text](https://github.com/karencl/IA2_TC3007C/blob/master/Images/test_acc.png)
 
-En la imagen de arriba podemos observar como fue la evaluación de mi modelo con el conjunto de prueba. Podemos ver que se obtuvo **accuracy: **, lo cual es bastante bueno y lo consideré aceptable para pasar a la siguiente etapa.
+En la imagen de arriba podemos observar como fue la evaluación de mi modelo con el conjunto de prueba. Podemos ver que se obtuvo **accuracy = 91.25%**, lo cual es bastante bueno y lo consideré aceptable para pasar a la siguiente etapa.
 
 ### 2 - Predict
 
 Para las predicciones simplemente decidí hacer una figura que tuviera 10 imágenes aleatorias del datasete prueba y mostrar en el título en valor real de la clase a la que pertenecen (en este caso sería que letra del alfabeto en lenguaje de señas se está mostrando) y al lado el valor de la predicción para cada imágen; tal y como se muestra a continuación:
 
+![alt text](https://github.com/karencl/IA2_TC3007C/blob/master/Images/predictions.png)
 
-Evidentemente, por los resultados del entrenamiento, la validación y la evaluación de mi modelo, los resultados de las predicciones son bastante buenos. No obstante, si bien muchas de las predicciones son correctas, hay algunas que no lo son por el tamaño de las imágenes; pues a pesar de que MobileNet, como dije anteriormente, es bueno para trabajar con imágenes, en la página dice que es recomendable usar tamaños de 160x160 para tener resultados realmente buenos, ya que trabajar con imágenes muy pequeñas puede no llegar a ofrecer los resultados esperados.
+Evidentemente, por los resultados del entrenamiento, la validación y la evaluación de mi modelo, los resultados de las predicciones son bastante buenos. No obstante, si bien muchas de las predicciones son correctas, hay algunas que no lo son por el tamaño de las imágenes (como con la primera, que predijo que era una *g*, cuando en realidad era una *h* porque realmente son muy parecidas en el alfabeto de lenguaje de señas). Pues a pesar de que MobileNet, como dije anteriormente, es bueno para trabajar con imágenes, en la página dice que es recomendable usar tamaños de 160x160 para tener resultados realmente buenos, ya que trabajar con imágenes muy pequeñas puede no llegar a ofrecer los resultados esperados.
 
 ***(NOTA: como dije en un principio, yo no hice más grandes las imágenes debido a que trabajé desde Colab y la memoria RAM que Google ofrece, no es suficiente para procesar tantas imágenes tan grandes. La razón principal por la que trabajé en éste y no desde mi computadora, es por un problema que tuve al intentar descargar el modelo en macos).***
 
