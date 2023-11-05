@@ -9,12 +9,19 @@ Para este entregable decidí hacer un modelo de deep learning que pudiera predec
 
 ![alt text](https://github.com/karencl/IA2_TC3007C/blob/master/Images/sign_alphabet.png)
 
+## Especifiaciones para correrlo
+En el main está todo listo para poner el código a prueba, cargar el modelo con su historial que se encuentran dentro de la carpeta "Model and history" y hacer predicciones. Sin embargo, si se quiere crear un nuevi modelo, solamente se tiene que descomentar la función **createModel()** que se encuentra en la línea número 27 del código del main. Así mismo, si se desea cargar el nuevo modelo con su historial que se va a guardar, es necesario poner el nombre de estos en las variables **modelo_cargado** e **historial_cargado** respectivamente, que se encuentran en el main en las líneas 30 y 31 del código del main. 
+
+*(NOTA: el nombre por default que tienen estos dos nuevos documentos, son: **MobileNet_signs_new.h5** y **MobileNet_model_history_new.json** respectivamente).*
+
+Por último, en caso de que se quiera hacer el resize y el split de los datos desde cero, será necesario descomentar la línea 24 del código del main, donde se encuentra la función de **prepareFiles()**. Personalmente no recomiendo esto porque puede tardar mucho.
+
 ## Dataset
 El dataset que utilicé para este entregable se llama "Sign Language MNIST", obtenido de: https://www.kaggle.com/datasets/datamunge/sign-language-mnist/data.
 Lo que se busca con este data set es predecir el lenguaje de señas, a través de imágenes del alfabeto. (Cabe aclarar que en este caso, se cuentan con 24 clases (24 letras diferentes) en vez de 26, debido a que en el lenguaje de señas, para la *j* y la *z* se requieren movimientos especiales y evidentemente no es posible analizar esto con imágenes).
 
 Especificaciones:
-- 784 pixeles por muestra
+- 784 pixeles por muestr
 - Imágenes
 - No. de clases: 24
 - Tipo de datos: Enteros
