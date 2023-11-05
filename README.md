@@ -1,7 +1,7 @@
 # IA2_TC3007C - Implementación de un modelo de deep learning (Portafolio de implementación)
 
 ## Descripción
-*Antes que nada, quiero decir que para este entregable tenía un trabajo hecho sobre un modelo para clasificación de audio de instrumentos musicales. Sin embargo, por cuestiones de tiempo (era muy pesado hacer varios entrenamientos de esto en mi computadora), decidí mejor hacer mi entregable con mi idea original, aunque planeo después agregar mi segundo proyecto a este mismo repo : )*
+*Antes que nada, quiero decir que para este entregable tenía un trabajo hecho sobre un modelo para clasificación de audio de muchos idiomas, para poder identificar cual es el que se habla. Sin embargo, por cuestiones de tiempo (era muy pesado hacer varios entrenamientos de esto en mi computadora), decidí mejor hacer mi entregable con mi idea original, aunque después planeo después agregar mi segundo proyecto a este mismo repo : )*
 
 Ahora si...
 
@@ -62,4 +62,5 @@ Evidentemente, por los resultados del entrenamiento, la validación y la evaluac
 
 
 ## Conclusión
-
+Como conclusión, quiero decir que considero que utilizar transfer learning es una técnica bastante buena cuando se trabaja con ciertos sets de datos, que son grandes y requieren de una estructura bastante robusta para ser entrenados en un modelo.
+Si bien considero que este proyecto es bastante sencillo, al trabajar con en éste me di cuenta de cual es la real importancia de los recursos que se poseen para trabajar en esto. Pues si trabajando solo con imágenes tuve que adaptar mi modelo para que pudiera funcionar con los recursos que tenía a la mano, para desarrollar el proyecto que originalmente tenía en mente, evidentemente necesito buscar la forma de poder ya sea adaptar el modelo a ciertos recursos, o trabajar con otras herramientas para poder llevarlo a cabo como planeaba.
