@@ -22,7 +22,7 @@ El dataset que utilicé para este entregable se llama "Sign Language MNIST", obt
 Lo que se busca con este data set es predecir el lenguaje de señas, a través de imágenes del alfabeto. (Cabe aclarar que en este caso, se cuentan con 24 clases (24 letras diferentes) en vez de 26, debido a que en el lenguaje de señas, para la *j* y la *z* se requieren movimientos especiales y evidentemente no es posible analizar esto con imágenes).
 
 Especificaciones:
-- 784 pixeles por muestr
+- 784 pixeles por muestra
 - Imágenes
 - No. de clases: 24
 - Tipo de datos: Enteros
@@ -69,11 +69,11 @@ Para las predicciones simplemente decidí hacer una figura que tuviera 10 imáge
 
 ![alt text](https://github.com/karencl/IA2_TC3007C/blob/master/Images/predictions.png)
 
-Evidentemente, por los resultados del entrenamiento, la validación y la evaluación de mi modelo, los resultados de las predicciones son bastante buenos. No obstante, si bien muchas de las predicciones son correctas, hay algunas que no lo son por el tamaño de las imágenes (como con la primera, que predijo que era una *g*, cuando en realidad era una *h* porque realmente son muy parecidas en el alfabeto de lenguaje de señas). Pues a pesar de que MobileNet, como dije anteriormente, es bueno para trabajar con imágenes, en la página dice que es recomendable usar tamaños de 160x160 para tener resultados realmente buenos, ya que trabajar con imágenes muy pequeñas puede no llegar a ofrecer los resultados esperados.
+Evidentemente, por los resultados del entrenamiento, la validación y la evaluación de mi modelo, los resultados de las predicciones son bastante buenos. No obstante, si bien muchas de las predicciones son correctas, hay algunas que no lo son por el tamaño de las imágenes (como con la primera, que predijo que era una *g*, cuando en realidad era una *h* porque realmente son muy parecidas en el alfabeto de lenguaje de señas). Pues a pesar de que MobileNet, como dije anteriormente, es bueno para trabajar con imágenes, en la página dice que es recomendable usar tamaños de 160x160 para tener resultados realmente buenos, ya que trabajar con imágenes muy pequeñas puede no llegar a ofrecer los resultados esperados y sobre todo si se trata de algo más complejo. En este caso, no hubo en realidad problema por ello, debido a que el dataset y el objetivo del proyecto son bastantes sencillos de trabajar.
 
 ***(NOTA: como dije en un principio, yo no hice más grandes las imágenes debido a que trabajé desde Colab y la memoria RAM que Google ofrece, no es suficiente para procesar tantas imágenes tan grandes. La razón principal por la que trabajé en éste y no desde mi computadora, es por un problema que tuve al intentar descargar el modelo en macos).***
 
 
 ## Conclusión
 Como conclusión, quiero decir que considero que utilizar transfer learning es una técnica bastante buena cuando se trabaja con ciertos sets de datos, que son grandes y requieren de una estructura bastante robusta para ser entrenados en un modelo.
-Si bien considero que este proyecto es bastante sencillo, al trabajar con en éste me di cuenta de cual es la real importancia de los recursos que se poseen para trabajar en esto. Pues si trabajando solo con imágenes tuve que adaptar mi modelo para que pudiera funcionar con los recursos que tenía a la mano, para desarrollar el proyecto que originalmente tenía en mente, evidentemente necesito buscar la forma de poder ya sea adaptar el modelo a ciertos recursos, o trabajar con otras herramientas para poder llevarlo a cabo como planeaba.
+Si bien considero que este proyecto que elegí fue bastante sencillo, al trabajar en éste me di cuenta de cual es la verdadera importancia de los recursos que se poseen para trabajar en esto. Pues si trabajando solo con imágenes tuve que adaptar mi modelo para que pudiera funcionar con los recursos que tenía a la mano, para desarrollar el proyecto que originalmente tenía en mente, evidentemente necesito buscar la forma de poder ya sea adaptar el modelo a ciertos recursos, o trabajar con otras herramientas para poder llevarlo a cabo como planeaba.
