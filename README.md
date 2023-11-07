@@ -42,6 +42,14 @@ MobileNet es un modelo del framework 'keras', que utiliza una operación llamada
 
 ***(NOTA: evidentemente, solamente utilicé parte de la estructura de la arquitectura de MobileNet y yo personalicé la última parte que vendría siendo el clasificador de 24 clases para el alfabeto en lenguaje de señas)***.
 
+## Mejoras al modelo
+La parte que yo modifiqué del modelo, fue la parte final y el clasificador. Estas son las capas que agregué y las modificaciones:
+
+- Para la reducción de parámetros y por ende, para la prevención de sobre ajuste, primeramente agregué una capa de **GlobalAveragePooling2D()**.
+- Luego para capturar una cierta variedad de características de las imágenes, agregué una capa **Dense()** con 256 neuronas y una función de activación de tipo *relu*. (Evidentemente en la capa final, la función de activación cambia porque se trata de un ejercicio de multiclase).
+- Posteriormente agregué una capa **Flatten()**, para "aplanar" y convertir los datos a 1 dimensión.
+- Y finalmente, agregué otra capa **Dense()** con 24 neuronas (porque tengo 24 clases) y una función de activación de tipo *softmax* porque como dije anteriormente, se trata de un ejercicio multiclase.
+
 ## Desempeño por etapas
 ### 1 - Fit
 ![alt text](https://github.com/karencl/IA2_TC3007C/blob/master/Images/history.png)
