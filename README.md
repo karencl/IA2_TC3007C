@@ -45,7 +45,7 @@ MobileNet es un modelo del framework 'keras', que utiliza una operación llamada
 ### Primer modelo
 La parte que yo modifiqué del modelo, fue la parte final y el clasificador. Estas son las capas que agregué y las modificaciones:
 
-- Para la reducción de parámetros y por ende, para la prevención de sobre ajuste, primeramente agregué una capa de **GlobalAveragePooling2D()**.
+- Para la reducción de parámetros y por ende, para la prevención de sobre ajuste, primeramente agregué una capa de **GlobalAveragePooling2D()**. (En este primer modelo no agregué una capa densa después de ésta, porque al ser una arquitectura hecha para datasets de imágenes, pensaba que no iba a ser necesario. Sin embargo no fue así y es por eso que en mi segundo modelo, como una de las mejoras, agregué una capa densa después de ésta).
 - Posteriormente agregué una capa **Flatten()**, para "aplanar" y convertir los datos a 1 dimensión.
 - Y finalmente, agregué una capa **Dense()** con 24 neuronas (porque tengo 24 clases) y una función de activación de tipo *softmax* porque como dije anteriormente, se trata de un ejercicio multiclase.
 
