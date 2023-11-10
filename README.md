@@ -1,6 +1,12 @@
 # IA2_TC3007C - Implementación de un modelo de deep learning (Portafolio de implementación)
 # Karen Cebreros López - A01704254
 
+## Correcciones
+
+- Se agregó la documentación de la mejora del modelo en el apartado **Modelo de keras que utilicé** dentro del readme, donde se pueden leer las características y resultados de mi primer modelo en el apartado **Primer modelo** y las mejoras que le hice a mi modelo final a partir de éstos en el apartado **Modelo final (mejoras al primer modelo)**.
+- Así mismo, dentro del código agregué la función **createInitialModel()**, que contiene el código que utilicé para crear mi primer modelo. (Ésta se encuentra comentada para no volver a crearlo, pero en caso de que se quiera correr, solo hay que descomentar la línea número 27 del código del main).
+- Por último, también agregué mi primer modelo junto con su historial en la carpeta **Model and history** con los nombres *MobileNet_model1_signs.h5* y *MobileNet_model1_history.json* respectivamente, por si se quieren cargar en las variables *modelo_cargado* e *historial_cargado* dentro del main, para ver los resultados directamente de mi primer modelo.
+
 ## Descripción
 *Antes que nada, quiero decir que para este entregable tenía un trabajo hecho sobre un modelo para clasificación de audio de muchos idiomas, para poder identificar cual es el que se habla. Sin embargo, por cuestiones de tiempo (era muy pesado hacer varios entrenamientos de esto en mi computadora), decidí mejor hacer mi entregable con mi idea original, aunque después planeo después agregar mi segundo proyecto a este mismo repo : )*
 
@@ -11,9 +17,11 @@ Para este entregable decidí hacer un modelo de deep learning que pudiera predec
 ![alt text](https://github.com/karencl/IA2_TC3007C/blob/master/Images/sign_alphabet.png)
 
 ## Especifiaciones para correr el código
-En el main está todo listo para poner el código a prueba, cargar el modelo con su historial que se encuentran dentro de la carpeta "Model and history" y hacer predicciones. Sin embargo, si se quiere crear un nuevo modelo, solamente se tiene que descomentar la función **createModel()** que se encuentra en la línea número 28 del código del main. Así mismo, si se desea cargar el nuevo modelo con su historial que se va a guardar, es necesario poner el nombre de estos en las variables **modelo_cargado** e **historial_cargado** respectivamente, que se encuentran en el main en las líneas 31 y 32 del código del main. 
+En el main está todo listo para poner el código a prueba, cargar el modelo final con su historial (nombrados como *MobileNet_bestmodel_signs.h5* y *MobileNet_bestmodel_history.json*), que se encuentran dentro de la carpeta "Model and history" para hacer predicciones. Sin embargo, si se quiere crear de nuevo el modelo, solamente se tiene que descomentar la función **createNewModel()** que se encuentra en la línea número 28 del código del main y si se desea cargar este nuevo modelo junto con su historial que se van a guardar, es necesario poner el nombre de éstos en las variables **modelo_cargado** e **historial_cargado** respectivamente, que se encuentran en el main en las líneas 31 y 32 del código del main. 
 
-*(NOTA: el nombre por default que tienen estos dos nuevos documentos, son: **MobileNet_model_signs_new.h5** y **MobileNet_model_history_new.json** respectivamente).*
+**(NOTA: el nombre por default que tienen estos dos nuevos archivos, son: *MobileNet_model_signs_new.h5* y *MobileNet_model_history_new.json* respectivamente).**
+
+Análogamente, como ya mencioné en las correcciones, si se quiere volver a crear el primer modelo y cargar sus archivos en el main, se tendría que descomentar la función **createInitialModel()** que se encuentra en la línea 27 del main y poner **MobileNet_model1_signs.h5** y **MobileNet_model1_history.json** en **modelo_cargado** e **historial_cargado** respectivamente, que se encuentran en el main en las líneas 31 y 32 del código del main.
 
 Por último, en caso de que se quiera hacer el resize y el split de los datos desde cero, será necesario descomentar la línea 24 del código del main, donde se encuentra la función de **prepareFiles()**. Personalmente no recomiendo esto porque puede tardar mucho.
 
@@ -59,7 +67,7 @@ Accuracy = 79.37% || Loss = 0.8527
 ##### Prueba:
 Accuracy = 77.5% || Loss = 0.8872
 
-***(NOTA): el código de la función que crea este modelo, se llama "createInitialModel()" y se encuentra comentada en la línea 27 del código del main. En caso de querer volverlo a correr, lo único que se tendría que hacer es descomentarla. El archivo de este modelo y su histrorial se encuentran guardados en la carpeta "Model and history", como "MobileNet_model1_signs.h5" y "MobileNet_model1_history.json". Cabe mencionar que aunque se vuelva a correr esta función, el modelo que se cargará en el main para ver las predicciones, es el modelo con el nombre "MobileNet_bestmodel_signs.h5" con su historial correspondiente "MobileNet_bestmodel_history.json". En caso de que se quieran ver las predicciones y las gráficas del primer modelo, será necesario poner el nombre de estos en las variables **modelo_cargado** e **historial_cargado** respectivamente, que se encuentran en el main en las líneas 31 y 32 del código del main).***
+***(NOTA): nuevamente, el código de la función que crea este modelo, se llama "createInitialModel()" y se encuentra comentada en la línea 27 del código del main. En caso de querer volverlo a correr, lo único que se tendría que hacer es descomentarla. El archivo de este modelo y su histrorial se encuentran guardados en la carpeta "Model and history", como "MobileNet_model1_signs.h5" y "MobileNet_model1_history.json". Cabe mencionar que aunque se vuelva a correr esta función, el modelo que se cargará en el main para ver las predicciones, es el modelo con el nombre "MobileNet_bestmodel_signs.h5" con su historial correspondiente "MobileNet_bestmodel_history.json". En caso de que se quieran ver las predicciones y las gráficas del primer modelo, será necesario poner el nombre de estos en las variables **modelo_cargado** e **historial_cargado** respectivamente, que se encuentran en el main en las líneas 31 y 32 del código del main).***
 
 ### Modelo final (mejoras al primer modelo)
 Después de observar los resultados de mi primer modelo, decidí hacerle unas cuantas modificaciones para incrementar su precisión en cuanto a las predicciones. Estas fueron las mejoras que le hice:
