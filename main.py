@@ -8,7 +8,7 @@
 
 # Librerías
 from prepare_data import prepareFiles
-from create_model import createModel, reshapeData
+from create_model import createInitialModel, createNewModel, reshapeData
 from tensorflow.keras.models import load_model
 import matplotlib.pyplot as plt
 import tensorflow as tf
@@ -24,11 +24,12 @@ if __name__ == '__main__':
     #prepareFiles()
     
     # Para crear un nuevo modelo, se descomenta la siguiente línea
-    #createModel()
+    #createInitialModel()
+    #createNewModel()
     
     # Cargo el modelo y su historial
-    modelo_cargado = 'MobileNet_signs.h5'
-    historial_cargado = 'MobileNet_model_history.json'
+    modelo_cargado = 'MobileNet_bestmodel_signs.h5'
+    historial_cargado = 'MobileNet_bestmodel_history.json'
     model = load_model(f'Model and history/{modelo_cargado}')
     with open(f'Model and history/{historial_cargado}', 'r') as f:
         history = json.load(f)
