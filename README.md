@@ -13,7 +13,7 @@ Para este entregable decidí hacer un modelo de deep learning que pudiera predec
 ## Especifiaciones para correr el código
 En el main está todo listo para poner el código a prueba, cargar el modelo con su historial que se encuentran dentro de la carpeta "Model and history" y hacer predicciones. Sin embargo, si se quiere crear un nuevo modelo, solamente se tiene que descomentar la función **createModel()** que se encuentra en la línea número 28 del código del main. Así mismo, si se desea cargar el nuevo modelo con su historial que se va a guardar, es necesario poner el nombre de estos en las variables **modelo_cargado** e **historial_cargado** respectivamente, que se encuentran en el main en las líneas 31 y 32 del código del main. 
 
-*(NOTA: el nombre por default que tienen estos dos nuevos documentos, son: **MobileNet_signs_new.h5** y **MobileNet_model_history_new.json** respectivamente).*
+*(NOTA: el nombre por default que tienen estos dos nuevos documentos, son: **MobileNet_model_signs_new.h5** y **MobileNet_model_history_new.json** respectivamente).*
 
 Por último, en caso de que se quiera hacer el resize y el split de los datos desde cero, será necesario descomentar la línea 24 del código del main, donde se encuentra la función de **prepareFiles()**. Personalmente no recomiendo esto porque puede tardar mucho.
 
