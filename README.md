@@ -4,7 +4,7 @@
 ## Correcciones
 
 - Se agregó la documentación de la mejora del modelo en el apartado **Modelo de keras que utilicé** dentro del readme, donde se pueden leer las características y resultados de mi primer modelo en el apartado **Primer modelo** y las mejoras que le hice a mi modelo final a partir de éstos en el apartado **Modelo final (mejoras al primer modelo)**.
-- Así mismo, dentro del archivo **create_model.py** agregué la función **createInitialModel()**, que contiene el código que utilicé para crear mi primer modelo. (Ésta se encuentra comentada para no volver a crearlo, pero en caso de que se quiera correr, solo hay que descomentar la línea número 27 del código del main y poner un 0 en la variable **modelo_a_cargar** que se encuentra en la línea 24 del main).
+- Así mismo, dentro del archivo **create_model.py** agregué la función **createInitialModel()** en una condicional, que contiene el código que utilicé para crear mi primer modelo. (Ésta se encuentra comentada para no volver a crearlo, pero en caso de que se quiera correr, solo hay que descomentar la línea número 30 del código del main y poner un 0 en la variable **modelo_a_cargar** que se encuentra en la línea 24 del main).
 - Por último, también agregué mi primer modelo junto con su historial en la carpeta **Model and history** con los nombres *MobileNet_model1_signs.h5* y *MobileNet_model1_history.json* respectivamente. Si se quieren ver los resultados del primer modelo, solo se tiene que poner un 0 en la variable **modelo_a_cargar** que se encuentra en la línea 24 del main.
 
 ## Descripción
