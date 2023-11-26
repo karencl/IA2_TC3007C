@@ -4,8 +4,8 @@
 ## Correcciones
 
 - Se agregó la documentación de la mejora del modelo en el apartado **Modelo de keras que utilicé** dentro del readme, donde se pueden leer las características y resultados de mi primer modelo en el apartado **Primer modelo** y las mejoras que le hice a mi modelo final a partir de éstos en el apartado **Modelo final (mejoras al primer modelo)**.
-- Así mismo, dentro del código agregué la función **createInitialModel()**, que contiene el código que utilicé para crear mi primer modelo. (Ésta se encuentra comentada para no volver a crearlo, pero en caso de que se quiera correr, solo hay que descomentar la línea número 27 del código del main).
-- Por último, también agregué mi primer modelo junto con su historial en la carpeta **Model and history** con los nombres *MobileNet_model1_signs.h5* y *MobileNet_model1_history.json* respectivamente, por si se quieren cargar en las variables *modelo_cargado* e *historial_cargado* dentro del main, para ver los resultados directamente de mi primer modelo.
+- Así mismo, dentro del archivo **create_model.py** agregué la función **createInitialModel()**, que contiene el código que utilicé para crear mi primer modelo. (Ésta se encuentra comentada para no volver a crearlo, pero en caso de que se quiera correr, solo hay que descomentar la línea número 27 del código del main y poner un 0 en la variable **modelo_a_cargar** que se encuentra en la línea 24 del main).
+- Por último, también agregué mi primer modelo junto con su historial en la carpeta **Model and history** con los nombres *MobileNet_model1_signs.h5* y *MobileNet_model1_history.json* respectivamente. Si se quieren ver los resultados del primer modelo, solo se tiene que poner un 0 en la variable **modelo_a_cargar** que se encuentra en la línea 24 del main.
 
 ## Descripción
 *Antes que nada, quiero decir que para este entregable tenía un trabajo hecho sobre un modelo para clasificación de audio de muchos idiomas, para poder identificar cual es el que se habla. Sin embargo, por cuestiones de tiempo (era muy pesado hacer varios entrenamientos de esto en mi computadora), decidí mejor hacer mi entregable con mi idea original, aunque después planeo después agregar mi segundo proyecto a este mismo repo : )*
@@ -17,13 +17,13 @@ Para este entregable decidí hacer un modelo de deep learning que pudiera predec
 ![alt text](https://github.com/karencl/IA2_TC3007C/blob/master/Images/sign_alphabet.png)
 
 ## Especifiaciones para correr el código
-En el main está todo listo para poner el código a prueba, cargar el modelo final con su historial (nombrados como *MobileNet_bestmodel_signs.h5* y *MobileNet_bestmodel_history.json*), que se encuentran dentro de la carpeta "Model and history" para hacer predicciones. Sin embargo, si se quiere crear de nuevo el modelo, solamente se tiene que descomentar la función **createNewModel()** que se encuentra en la línea número 28 del código del main y si se desea cargar este nuevo modelo junto con su historial que se van a guardar, es necesario poner el nombre de éstos en las variables **modelo_cargado** e **historial_cargado** respectivamente, que se encuentran en el main en las líneas 31 y 32 del código del main. 
+En el main está todo listo para poner el código a prueba, cargar el modelo final con su historial (nombrados como *MobileNet_finalmodel_signs.h5* y *MobileNet_finalmodel_history.json*), que se encuentran dentro de la carpeta "Model and history" para hacer predicciones. Esto lo define una variable llamada **modelo_a_cargar** (que por default está en 1 para probar el modelo final) que se encuentra en la línea 24 del main.
 
-**(NOTA: el nombre por default que tienen estos dos nuevos archivos, son: *MobileNet_model_signs_new.h5* y *MobileNet_model_history_new.json* respectivamente).**
+Si se desea volver a crear el modelo final, se tendría que descomentar la línea número 30 del código del main, donde se encuentra la función **createFinalModel()** dentro de una condiconal. Si se desea volver a crear el modelo inicial, se tendría que descomentar esa misma línea (30) del código, donde se encuentra la función **createInitialModel()** dentro de la misma condicional. Y aparte se tendría que inicializar **modelo_a_cargar** en 0, ya que este indica que se quiere trabajar con el primer modelo.
 
-Análogamente, como ya mencioné en las correcciones, si se quiere volver a crear el primer modelo y cargar sus archivos en el main, se tendría que descomentar la función **createInitialModel()** que se encuentra en la línea 27 del main y poner **MobileNet_model1_signs.h5** y **MobileNet_model1_history.json** en **modelo_cargado** e **historial_cargado** respectivamente, que se encuentran en el main en las líneas 31 y 32 del código del main.
+Para la preparación de los datos, se utiliza la misma lógica, solamente que la línea que se tendría que descomentar es la línea de código 27 del main, donde hay una condicional para **prepareFiles()**, dependiendo del modelo que se quiera utilizar. (1 en *modelo_a_cargar* para el modelo final y 0 en *modelo_a_cargar* para el modelo inicial. (Personalmente no recomiendo esto porque puede tardar mucho).
 
-Por último, en caso de que se quiera hacer el resize y el split de los datos desde cero, será necesario descomentar la línea 24 del código del main, donde se encuentra la función de **prepareFiles()**. Personalmente no recomiendo esto porque puede tardar mucho.
+**(NOTA: los nombres por default que tienen los archivos del modelo y su historial para modelo final, son: *MobileNet_finalmodel_signs.h5* y *MobileNet_finalmodel_history.json* respectivamente. De igual forma los nombres por default que tienen los archivos del modelo y su historial para el primer modelo, son: *MobileNet_model1_signs.h5* y *MobileNet_model1_history.json* respectivamente. En caso de que alguno de los modelos se vuelva a crear, se sobreescriben estos archivos con sus respectivos nombres).**
 
 ## Dataset
 El dataset que utilicé para este entregable se llama "Sign Language MNIST", obtenido de: https://www.kaggle.com/datasets/datamunge/sign-language-mnist/data.
@@ -41,7 +41,7 @@ Tamaño de cada conjunto:
 - Set de prueba: 2,869 imágenes
 
 ## Especificaciones de uso del dataset para el entrenaimiento
-Vienen dos archivos que ya contienen lista la información y por separado para el conjunto de datos de entrenamiento y de prueba.
+Vienen dos archivos que ya contienen lista la información y por separado para el conjunto de datos de entrenamiento y de prueba. Sin embargo, yo si hice una preparación de los datos, para cambiar su tamaño y su forma, para mejorar el desempeño de mi modelo.
 
 ## Modelo de keras que utilicé
 Para el transfer learning decidí utilizar MobileNet. 
@@ -51,27 +51,51 @@ MobileNet es un modelo del framework 'keras', que utiliza una operación llamada
 ***(NOTA: evidentemente, solamente utilicé parte de la estructura de la arquitectura de MobileNet y yo personalicé la última parte que vendría siendo el clasificador de 24 clases para el alfabeto en lenguaje de señas)***.
 
 ### Primer modelo
-La parte que yo modifiqué del modelo, fue la parte final y el clasificador. Estas son las capas que agregué y las modificaciones:
+La parte que yo modifiqué del modelo, fue la parte final y el clasificador. Estas son las capas que agregué, las modificaciones y sus características:
 
-- Para la reducción de parámetros y por ende, para la prevención de sobre ajuste, primeramente agregué una capa de **GlobalAveragePooling2D()**. (En este primer modelo no agregué una capa densa después de ésta, porque al ser una arquitectura hecha para datasets de imágenes, pensaba que no iba a ser necesario. Sin embargo no fue así y es por eso que en mi segundo modelo, como una de las mejoras, agregué una capa densa después de ésta).
+Datos:
+- Imágenes de 40x40x3 (para este primer modelo, solo las hice tantito más grandes de lo que ya venía).
+
+Características:
+- Epochs: 10
+- Learning rate: 0.0003
+- train steps_per_epoch: 100
+- validation_steps: 80
+- test steps: 40
+
+Capas:
+- Para capturar una cierta variedad de características de las imágenes y hacer mi modelo más preciso, agregué dos capas **Dense()** con 128 neuronas y una función de activación de tipo *relu*. (Evidentemente en la capa final, la función de activación cambia porque se trata de un ejercicio de multiclase).
 - Posteriormente agregué una capa **Flatten()**, para "aplanar" y convertir los datos a 1 dimensión.
 - Y finalmente, agregué una capa **Dense()** con 24 neuronas (porque tengo 24 clases) y una función de activación de tipo *softmax* porque como dije anteriormente, se trata de un ejercicio multiclase.
 
 #### Resultados:
 ##### Entrenamiento:
-Accuracy = 87.5% || Loss = 0.6833
+Accuracy = 32.15% || Loss = 2.2727
 
 ##### Validación:
-Accuracy = 79.37% || Loss = 0.8527
+Accuracy = 26.44% || Loss = 2.4433
 
 ##### Prueba:
-Accuracy = 77.5% || Loss = 0.8872
+Accuracy = 24.53% || Loss = 2.5494
 
-***(NOTA): nuevamente, el código de la función que crea este modelo, se llama "createInitialModel()" y se encuentra comentada en la línea 27 del código del main. En caso de querer volverlo a correr, lo único que se tendría que hacer es descomentarla. El archivo de este modelo y su histrorial se encuentran guardados en la carpeta "Model and history", como "MobileNet_model1_signs.h5" y "MobileNet_model1_history.json". Cabe mencionar que aunque se vuelva a correr esta función, el modelo que se cargará en el main para ver las predicciones, es el modelo con el nombre "MobileNet_bestmodel_signs.h5" con su historial correspondiente "MobileNet_bestmodel_history.json". En caso de que se quieran ver las predicciones y las gráficas del primer modelo, será necesario poner el nombre de estos en las variables **modelo_cargado** e **historial_cargado** respectivamente, que se encuentran en el main en las líneas 31 y 32 del código del main).***
+Como se puede observar, este modelo no fue para nada bueno y a pesar de que traté de jugar con los hiperparámetros y las capas, el 'accuracy' no aumentó mucho. Fue por esto que para mi siguiente modelo, decidí trabajar con imágenes más grandes y hacer otras cuantas modificaciones para que mejorara la precisión de mi modelo.
+
+***(NOTA: nuevamente, el código de la función que crea este modelo, se llama "createInitialModel()" y se encuentra comentada en la línea 30 del código del main dentro de una condicional. En caso de que se quiera trabajar con este modelo, lo primero que hay que hacer es poner un 0 en la variable modelo_a_cargar en la línea 24 del main. Luego, en caso de querer crear de nuevo el primer modelo, se tendría que hacer es la línea 30 del main. Y en caso de que se quieran volver a preparar los datos de este modelo, se tendría que descomentar la línea número 27 del main).***
 
 ### Modelo final (mejoras al primer modelo)
-Después de observar los resultados de mi primer modelo, decidí hacerle unas cuantas modificaciones para incrementar su precisión en cuanto a las predicciones. Estas fueron las mejoras que le hice:
+Después de observar los malos resultados de mi primer modelo, decidí hacerle unas cuantas modificaciones para incrementar su precisión en cuanto a las predicciones. Estas fueron las mejoras que le hice:
 
+Datos:
+- Imágenes de 80x80x3 (para este modelo, las agrandé el doble de lo que ya las tenía en mi primer modelo).
+
+Características:
+- Epochs: 10
+- Learning rate: 0.0001
+- train steps_per_epoch: 100
+- validation_steps: 40
+- test steps: 20
+
+Capas:
 - Lo primero no lo modifiqué. Es decir, dejé la capa de **GlobalAveragePooling2D()** para la reducción de parámetros.
 - Luego ahora si, para capturar una cierta variedad de características de las imágenes y hacer mi modelo más preciso, agregué una capa **Dense()** con 256 neuronas y una función de activación de tipo *relu*. (Evidentemente en la capa final, la función de activación cambia porque se trata de un ejercicio de multiclase).
 - La siguiente capa (**Flatten()**), la dejé para "aplanar" y convertir los datos a 1 dimensión.
