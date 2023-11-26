@@ -4,12 +4,11 @@ import pandas as pd
 import numpy as np
 
 
-def resize_image_from_pixels(pixels, target_size=(80, 80)):
+def resize_image_from_pixels(pixels, target_size):
     """ Hcae un resize de una imagen que se pasa en pixeles
     Args:
         pixels (ndarray) - un arreglo que los 784 pixeles de las imágenes originales
-        target_size (lst) - la dimensión a la que se quiere hacer el rezise (en este casi 224x224)
-    
+        target_size (lst) - la dimensión a la que se quiere hacer el rezise
     Returns:
         reized_image (ndarray) - la imagen con su nuevo tamaño, ya normalizada
     """
@@ -56,9 +55,10 @@ def saveFile(a, file_name):
     print(f'{file_name} created successfully!')
     
 
-def prepareFiles():
-    """ 
-    Se hace toda la preparación de datos. Esto incluye el 'resize' y el split.
+def prepareFiles(target_size):
+    """ Se hace toda la preparación de datos. Esto incluye el 'resize' y el split.
+    Args:
+        target_size (lst) - la dimensión a la que se quiere hacer el rezise
     """
     
     # Se leen los archivos .csv que contienen los pixeles de las imgánes y sus respectivas etiquetas 
@@ -72,8 +72,8 @@ def prepareFiles():
     test_labels = np.array(test_df['label'])
 
     # Se hace el resize de imágenes
-    train_images_resized = train_image_data.apply(lambda row: resize_image_from_pixels(row.values), axis=1, result_type='expand')
-    test_images_resized = test_image_data.apply(lambda row: resize_image_from_pixels(row.values), axis=1, result_type='expand')
+    train_images_resized = train_image_data.apply(lambda row: resize_image_from_pixels(row.values, target_size), axis=1, result_type='expand')
+    test_images_resized = test_image_data.apply(lambda row: resize_image_from_pixels(row.values, target_size), axis=1, result_type='expand')
     train_images = train_images_resized.values
     test_images = test_images_resized.values
 
@@ -81,11 +81,11 @@ def prepareFiles():
     val_images, test_images, val_labels, test_labels = split_val_test(test_images, test_labels, pct=0.6)
 
     # Se guardan los archivos
-    saveFile(train_images, 'Dataset/resized_train.csv')
+    saveFile(train_images, 'Dataset/resized_train_' + str(target_size[0]) + '.csv')
     saveFile(train_labels, 'Dataset/train_labels.csv')
-    saveFile(test_images, 'Dataset/resized_test.csv')
+    saveFile(test_images, 'Dataset/resized_test_' + str(target_size[0]) + '.csv')
     saveFile(test_labels, 'Dataset/test_labels.csv')
-    saveFile(val_images, 'Dataset/resized_validation.csv')
+    saveFile(val_images, 'Dataset/resized_validation_' + str(target_size[0]) + '.csv')
     saveFile(val_labels, 'Dataset/validation_labels.csv')
     
     print('Datos listos')

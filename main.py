@@ -8,7 +8,7 @@
 
 # Librerías
 from prepare_data import prepareFiles
-from create_model import createInitialModel, createNewModel, reshapeData
+from create_model import createInitialModel, createFinalModel, reshapeData
 from tensorflow.keras.models import load_model
 import matplotlib.pyplot as plt
 import tensorflow as tf
@@ -20,16 +20,23 @@ import json
 
 
 if __name__ == '__main__':
+    # Selección del modelo que se quiere cargar -> primero=0 / final=1
+    modelo_a_cargar = 1
+
     # Para olver a preparar los datos, se descomenta la siguiente línea
-    #prepareFiles()
+    #prepareFiles((80, 80)) if (modelo_a_cargar) else prepareFiles((40, 40))
     
     # Para crear un nuevo modelo, se descomenta la siguiente línea
-    #createInitialModel()
-    #createNewModel()
+    #createFinalModel(80) if(modelo_a_cargar) else createInitialModel(40)
     
     # Cargo el modelo y su historial
-    modelo_cargado = 'MobileNet_bestmodel_signs.h5'
-    historial_cargado = 'MobileNet_bestmodel_history.json'
+    if (modelo_a_cargar):
+        modelo_cargado = 'MobileNet_finalmodel_signs.h5'
+        historial_cargado = 'MobileNet_finalmodel_history.json'
+    else:
+        modelo_cargado = 'MobileNet_model1_signs.h5'
+        historial_cargado = 'MobileNet_model1_history.json'
+
     model = load_model(f'Model and history/{modelo_cargado}')
     with open(f'Model and history/{historial_cargado}', 'r') as f:
         history = json.load(f)
@@ -57,9 +64,15 @@ if __name__ == '__main__':
     print('Final test accuracy:', history['test_acc'])
     
     # Preparo los datos para las predicciones
-    imgs_test_df = pd.read_csv('Dataset/resized_test.csv')
-    lbls_test_df = pd.read_csv('Dataset/test_labels.csv')
-    test_images, test_labels = reshapeData(imgs_test_df.values, lbls_test_df.values)
+    if (modelo_a_cargar): 
+        imgs_test_df = pd.read_csv('Dataset/resized_test_80.csv')
+        lbls_test_df = pd.read_csv('Dataset/test_labels.csv')
+        test_images, test_labels = reshapeData(imgs_test_df.values, lbls_test_df.values, 80)
+    else:
+        imgs_test_df = pd.read_csv('Dataset/resized_test_40.csv')
+        lbls_test_df = pd.read_csv('Dataset/test_labels.csv')
+        test_images, test_labels = reshapeData(imgs_test_df.values, lbls_test_df.values, 40)
+
     # Utilizo el alfabeto para las clases, sin las letras que no vienen incluidas en el dataset
     alphabet = list(string.ascii_lowercase)
     alphabet.remove('j')
