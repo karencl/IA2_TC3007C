@@ -96,8 +96,8 @@ Características:
 - test steps: 20
 
 Capas:
-- Lo primero no lo modifiqué. Es decir, dejé la capa de **GlobalAveragePooling2D()** para la reducción de parámetros.
-- Luego ahora si, para capturar una cierta variedad de características de las imágenes y hacer mi modelo más preciso, agregué una capa **Dense()** con 256 neuronas y una función de activación de tipo *relu*. (Evidentemente en la capa final, la función de activación cambia porque se trata de un ejercicio de multiclase).
+- Para la reducción de parámetros y por ende, para la prevención de sobre ajuste (ya que me llegó a pasar esto con mi primer modelo), primeramente agregué una capa de **GlobalAveragePooling2D()**.
+- Luego, de nuevo para capturar una cierta variedad de características de las imágenes y hacer mi modelo más preciso, puse ahora una capa **Dense()**, pero esta vez con 256 neuronas y una función de activación de tipo *relu*. (Evidentemente en la capa final, la función de activación cambia porque se trata de un ejercicio de multiclase).
 - La siguiente capa (**Flatten()**), la dejé para "aplanar" y convertir los datos a 1 dimensión.
 - Y finalmente, evidentemente dejé la otra capa **Dense()** con 24 neuronas (porque tengo 24 clases) y una función de activación de tipo *softmax* para mi clasificador miltuclase.
 
@@ -131,9 +131,9 @@ Evidentemente, por los resultados del entrenamiento, la validación y la evaluac
 
 No obstante, si bien muchas de las predicciones son correctas, hay algunas que no lo son por el tamaño de las imágenes (como con la primera, que predijo que era una *g*, cuando en realidad era una *h* porque realmente son muy parecidas en el alfabeto de lenguaje de señas). Pues a pesar de que MobileNet, como dije anteriormente, es bueno para trabajar con imágenes, en la página dice que es recomendable usar tamaños de 160x160 para tener resultados realmente buenos, ya que trabajar con imágenes muy pequeñas puede no llegar a ofrecer los resultados esperados y sobre todo si se trata de algo más complejo. En este caso, no hubo en realidad problema por ello, debido a que el dataset y el objetivo del proyecto son bastantes sencillos de trabajar.
 
-***(NOTA: como dije en un principio, yo no hice más grandes las imágenes debido a que trabajé desde Colab y la memoria RAM que Google ofrece, no es suficiente para procesar tantas imágenes tan grandes. La razón principal por la que trabajé en éste y no desde mi computadora, es por un problema que tuve al intentar descargar el modelo en macos).***
+***(NOTA: ya no hice más grandes las imágenes debido a que es bastante pesado procesar tantas imágenes así y tardaba mucho).***
 
 
 ## Conclusión
 Como conclusión, quiero decir que considero que utilizar transfer learning es una técnica bastante buena cuando se trabaja con ciertos sets de datos, que son grandes y requieren de una estructura bastante robusta para ser entrenados en un modelo.
-Si bien considero que este proyecto que elegí fue bastante sencillo, al trabajar en éste me di cuenta de cual es la verdadera importancia de los recursos que se poseen para trabajar en esto. Pues si trabajando solo con imágenes tuve que adaptar mi modelo para que pudiera funcionar con los recursos que tenía a la mano, para desarrollar el proyecto que originalmente tenía en mente, evidentemente necesito buscar la forma de poder ya sea adaptar el modelo a ciertos recursos, o trabajar con otras herramientas para poder llevarlo a cabo como planeaba.
+Si bien considero que este proyecto que elegí fue bastante sencillo, al trabajar en éste me di cuenta de cual es la verdadera importancia de los recursos y los datos que se poseen para trabajar en esto. Pues si trabajando solo con imágenes tuve que adaptar bastante mis datos y mi modelo para que pudiera funcionar bien con los recursos que tenía a la mano, para desarrollar el proyecto que originalmente tenía en mente, evidentemente necesito buscar la forma de poder ya sea adaptar el modelo a ciertos recursos, o trabajar con otras herramientas para poder llevarlo a cabo como planeaba.
